@@ -1,28 +1,31 @@
 import React, { Fragment, useState } from "react";
 
 const EditTodo = ({ todo }) => {
-  const [description, setDescription] = useState(todo.description)
+  const [description, setDescription] = useState(todo.description);
 
   const onChange = (event) => {
-    const {value} = event.target;
+    const { value } = event.target;
     setDescription(value);
-  }
+  };
 
-  const updateDescription = async (event) =>{
+  const updateDescription = async (event) => {
     event.preventDefault();
     try {
-      const body = {description};
-      const response = await fetch(`http://localhost:3001/api/todos/${todo.todo_id}`, {
-        method: "PUT",
-        headers: {"Content-Type" : "application/json"},
-        body: JSON.stringify(body)
-      });
-      window.location = '/'
+      const body = { description };
+      const response = await fetch(
+        `http://localhost:3001/api/todos/${todo.todo_id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        }
+      );
+      window.location = "/";
     } catch (error) {
-      console.error(error.message)
+      console.error(error.message);
     }
-  }
-  
+  };
+
   return (
     <div>
       <Fragment>
@@ -34,9 +37,6 @@ const EditTodo = ({ todo }) => {
         >
           Edit
         </button>
-        {/*
-        id = id10
-        */}
 
         <div className="modal" id={`id${todo.todo_id}`}>
           <div className="modal-dialog">
@@ -49,7 +49,12 @@ const EditTodo = ({ todo }) => {
               </div>
 
               <div className="modal-body">
-                <input type="text" className="form-control" value={description} onChange={onChange}/>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={description}
+                  onChange={onChange}
+                />
               </div>
 
               <div className="modal-footer">
@@ -57,7 +62,7 @@ const EditTodo = ({ todo }) => {
                   type="button"
                   className="btn btn-warning"
                   data-dismiss="modal"
-                  onClick={e => updateDescription(e)}
+                  onClick={(e) => updateDescription(e)}
                 >
                   Edit
                 </button>

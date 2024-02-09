@@ -6,14 +6,14 @@ const ListTodos = () => {
 
   const deleteTodo = async (id) => {
     try {
-        const deleteTodo = await fetch(`http://localhost:3001/api/todos/${id}`,{
-            method: "DELETE"
-        });
-        setTodos(todos.filter((todo) => todo.todo_id !== id));
+      const deleteTodo = await fetch(`http://localhost:3001/api/todos/${id}`, {
+        method: "DELETE",
+      });
+      setTodos(todos.filter((todo) => todo.todo_id !== id));
     } catch (error) {
-       console.error(error.message) 
+      console.error(error.message);
     }
-  }
+  };
 
   const getTodos = async () => {
     try {
@@ -41,17 +41,19 @@ const ListTodos = () => {
             </tr>
           </thead>
           <tbody>
-            {/*<tr>
-                    <td>Oscar</td>
-                    <td>Javier</td>
-                    <td>svitakwe87@hotmail.com</td>
-                </tr> */}
             {todos.map((todo) => (
               <tr key={todo.todo_id}>
                 <td>{todo.description}</td>
-                <td><EditTodo todo={todo}/></td>
                 <td>
-                <button className="btn btn-danger" onClick={() => deleteTodo(todo.todo_id)}>Delete</button> 
+                  <EditTodo todo={todo} />
+                </td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => deleteTodo(todo.todo_id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
