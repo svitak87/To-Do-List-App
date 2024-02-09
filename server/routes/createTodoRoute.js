@@ -8,11 +8,11 @@ router.post("/todos", async (req, res) => {
     const newTodo = await createTodo(description);
     res.status(200).json(newTodo);
   } catch (error) {
-    if (error.message === "La descripción no está definida.") {
+    if (error.message === "The description is undefined") {
       res.status(400).json({ error: error.message });
     } else {
-      console.error("Error al crear la tarea:", error.message);
-      res.status(500).json({ error: "Error interno del servidor" });
+      console.error("Error to create the description:", error.message);
+      res.status(500).json({ error: "Internal server error" });
     }
   }
 });

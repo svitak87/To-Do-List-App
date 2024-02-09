@@ -5,7 +5,7 @@ const pool = require('../database/db');
 const createTodo = async (description) => {
   try {
     if (!description) {
-      throw new Error("La descripción no está definida.");
+      throw new Error("The description is undefined");
     }
     const result = await pool.query(
       "INSERT INTO todo (description) VALUES ($1) RETURNING *",
