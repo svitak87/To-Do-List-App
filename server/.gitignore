@@ -7,3 +7,6 @@ package-lock.json
 
 # Ignorar node_modules
 node_modules
+
+# Ignorar el archivo .gitignore
+.gitignore
