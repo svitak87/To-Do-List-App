@@ -11,17 +11,17 @@ const InputTodo = () => {
   const onSubmitForm = async (event) => {
     event.preventDefault();
     try {
-      const body = {description};
+      const body = { description };
       const response = await fetch("http://localhost:3001/api/todos", {
         method: "POST",
-        headers: {"Content-Type" : "application/json"},
-        body: JSON.stringify(body)
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
       });
-      window.location = '/';
+      window.location = "/";
     } catch (error) {
       console.error(error.message);
     }
-  }
+  };
   return (
     <div>
       <Fragment>
@@ -41,3 +41,4 @@ const InputTodo = () => {
 };
 
 export default InputTodo;
+
